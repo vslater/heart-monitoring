@@ -41,14 +41,6 @@ class App extends Component {
   
 
   render() {
-    var graphData = [{
-      id: 1,
-      value: 67
-    },
-    {
-      id: 2,
-      value: 68
-    }];
     var letterStyle = {
         padding: 10,
         margin: 10,
@@ -60,11 +52,11 @@ class App extends Component {
         textAlign: "center"
       };
 
-    const { selectedReddit, posts, isFetching, lastUpdated } = this.props
+    const { selectedReddit, posts, isFetching, lastUpdated, tooltip } = this.props
     const isEmpty = posts.length === 0
     return (
       <div style={letterStyle}>
-        <HeartGraph/>
+        <HeartGraph tooltip={tooltip}/>
         <Picker value={selectedReddit}
                 onChange={this.handleChange}
                 options={[ 'reactjs', 'frontend' ]} />
@@ -94,7 +86,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { selectedReddit, postsByReddit } = state
+  const { selectedReddit, postsByReddit } = state.reducer
   const {
     isFetching,
     lastUpdated,
@@ -104,11 +96,15 @@ const mapStateToProps = state => {
     items: []
   }
 
+  const {GraphReducer} = state;
+  const {tooltip} = GraphReducer;
+
   return {
     selectedReddit,
     posts,
     isFetching,
-    lastUpdated
+    lastUpdated,
+    tooltip
   }
 }
 

@@ -4,10 +4,8 @@ import React, { PropTypes } from 'react'
 import {LineChart} from 'react-easy-chart';
 //import {BarChart} from 'react-easy-chart';
 
-var tooltip = '';
-
 function mouseOverHandler(d, e) {
-    tooltip = 'hovered';
+    //tooltip = 'hovered';
     // d.setState({
     //   showToolTip: true,
     //   top: `${e.screenY - 10}px`,
@@ -41,7 +39,7 @@ function createTooltip() {
   }
 
 
-const HeartGraph = () => (
+const HeartGraph = ({tooltip}) => (
   <span>
     <h1>Heart Graph</h1>
       <LineChart
