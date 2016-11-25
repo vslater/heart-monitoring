@@ -4,6 +4,11 @@ export const SELECT_REDDIT = 'SELECT_REDDIT'
 export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
 export const UPDATE_TOOLTIP = 'UPDATE_TOOLTIP'
 
+export const updateTooltip = tooltip => ({
+  type: UPDATE_TOOLTIP,
+  tooltip
+})
+
 export const selectReddit = reddit => ({
   type: SELECT_REDDIT,
   reddit
