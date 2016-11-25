@@ -8,7 +8,7 @@ import HeartGraph from '../components/HeartGraph'
 class App extends Component {
 
   componentDidMount() {
-    const { dispatch, selectedReddit } = this.props
+    //const { dispatch, selectedReddit } = this.props
   }
 
   render() {
@@ -23,10 +23,9 @@ class App extends Component {
         textAlign: "center"
       };
 
-    const {tooltip } = this.props
     return (
       <div style={letterStyle}>
-        <HeartGraph tooltip={tooltip} dispatch={this.props.dispatch}/>
+        <HeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
       </div>
     )
   }
@@ -35,7 +34,7 @@ class App extends Component {
 const mapStateToProps = state => {
 
   return {
-    tooltip : state.GraphReducer.tooltip
+    graph : state.GraphReducer
   }
 }
 

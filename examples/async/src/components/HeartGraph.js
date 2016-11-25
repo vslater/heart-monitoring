@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import {LineChart} from 'react-easy-chart';
-import { updateTooltip } from '../actions'
+import { updateTooltip, showTooltip } from '../actions'
 
 
 function mouseMoveHandler(e) {
@@ -45,10 +45,22 @@ var data = [
   ]
 ];
 
-const HeartGraph = ({dispatch, tooltip}) => {
+const HeartGraph = ({dispatch, graph}) => {
 
   function mouseOverHandler(d, e) {
-    dispatch(updateTooltip('change'))
+
+    const {tooltips, showingTooltip} = graph;
+
+    if (tooltips['x : ' + d.x + ', y : ' + d.y]) {
+      dispatch(showTooltip('x : ' + d.x + ', y : ' + d.y))
+    }
+    else {
+      dispatch(updateTooltip({
+        key : 'x : ' + d.x + ', y : ' + d.y,
+        reason : null
+      }));
+      dispatch(showTooltip('x : ' + d.x + ', y : ' + d.y))
+    }
     //tooltip = 'hovered';
     // d.setState({
     //   showToolTip: true,
@@ -75,8 +87,10 @@ const HeartGraph = ({dispatch, tooltip}) => {
           data={data}
         />
 
-        {true &&
-          <h1>{tooltip}</h1>
+        {graph.showingTooltip &&
+          <div>
+            <p>{graph.showingTooltip +' ' + graph.tooltips[graph.showingTooltip]}</p>
+          </div>
         }
     </span>
   );

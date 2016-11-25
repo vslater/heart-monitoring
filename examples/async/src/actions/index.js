@@ -3,10 +3,16 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SELECT_REDDIT = 'SELECT_REDDIT'
 export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
 export const UPDATE_TOOLTIP = 'UPDATE_TOOLTIP'
+export const SHOW_TOOLTIP = 'SHOW_TOOLTIP'
 
 export const updateTooltip = tooltip => ({
   type: UPDATE_TOOLTIP,
   tooltip
+})
+
+export const showTooltip = tooltipKey => ({
+  type: SHOW_TOOLTIP,
+  tooltipKey
 })
 
 export const selectReddit = reddit => ({
