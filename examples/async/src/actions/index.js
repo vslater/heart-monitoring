@@ -4,6 +4,8 @@ export const SELECT_REDDIT = 'SELECT_REDDIT'
 export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
 export const UPDATE_TOOLTIP = 'UPDATE_TOOLTIP'
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP'
+export const GET_DATA_MINUTE = 'GET_DATA_MINUTE'
+export const GET_DATA = 'GET_DATA'
 
 export const updateTooltip = tooltip => ({
   type: UPDATE_TOOLTIP,

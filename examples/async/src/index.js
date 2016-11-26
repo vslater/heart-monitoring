@@ -30,3 +30,9 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+
+//while(true) {
+    // setTimeout(() => {
+    //     store.dispatch({type : 'GET_DATA'});
+    // }, 1000);
+//}

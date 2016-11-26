@@ -40,17 +40,12 @@ function createTooltip() {
 
 const HeartGraph = ({dispatch, graph}) => {
   setTimeout(() => {
-        dispatch({type : 'GET_DATA_MINUTE'});
-    }, 10000);
+        dispatch({type : 'GET_DATA'});
+    }, 1000);
 
-  const {tooltips, showingTooltip, minuteData} = graph;
+  const {tooltips, showingTooltip, data} = graph;
   
   function mouseOverHandler(d, e) {
-    fetch("http://localhost:3000")
-    .then(function(result) {
-      console.log('result', result);
-    });
-
     if (tooltips['x : ' + d.x + ', y : ' + d.y]) {
       dispatch(showTooltip('x : ' + d.x + ', y : ' + d.y))
     }
@@ -76,7 +71,6 @@ const HeartGraph = ({dispatch, graph}) => {
     <span>
         <LineChart
           axes
-          dataPoints
           grid
           yDomainRange={[50, 100]}
           mouseOverHandler={mouseOverHandler}
@@ -84,7 +78,7 @@ const HeartGraph = ({dispatch, graph}) => {
           mouseMoveHandler={mouseMoveHandler}
           width={800}
           height={350}
-          data={minuteData}
+          data={data}
         />
 
         {showingTooltip &&

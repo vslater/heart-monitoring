@@ -4,6 +4,7 @@ import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 import HeartGraph from '../components/HeartGraph'
+import SecondHeartGraph from '../components/SecondHeartGraph'
 
 class App extends Component {
 
@@ -12,20 +13,41 @@ class App extends Component {
   }
 
   render() {
-    var letterStyle = {
-        padding: 10,
-        margin: 10,
+    var appStyle = {
+        // padding: 10,
+        // margin: 10,
         //backgroundColor: "#ffde00",
         //color: "#333",
-        display: "inline-block",
+        //display: "inline-block",
         fontFamily: "monospace",
-        //fontSize: "32",
-        textAlign: "center"
+        fontSize: "32",
+        textAlign: "center",
+        display : 'flex',
+        justifyContent : 'center'
+
       };
 
+    var h1Style = {
+  padding: 10,
+  margin: 10,
+  backgroundColor: "#ffde00",
+  //color: "#333",
+  //display: "inline-block",
+  fontFamily: "monospace",
+  fontSize: "50",
+  textAlign: "center",
+  display : 'flex',
+  justifyContent : 'center'
+};
+
     return (
-      <div style={letterStyle}>
-        <HeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
+      <div style={appStyle}>
+        <div>
+          <h1 style={h1Style}>Heart Graph</h1>
+        </div>
+        <br/>
+        <SecondHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
+        {/*<HeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>*/}
       </div>
     )
   }
