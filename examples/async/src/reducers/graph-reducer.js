@@ -41,7 +41,8 @@ var initialState = {
 };
 
 function getRandomArbitrary(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * 40) + 50
+    //return Math.floor(Math.random() * (max - min) + min);
 }
 
 const graphReducer = (state = initialState, action) => {
@@ -49,7 +50,7 @@ const graphReducer = (state = initialState, action) => {
     case GET_DATA_MINUTE:
       state.minuteMax = state.minuteMax + 10;
       state.minuteData[0].shift();
-      state.minuteData[0].push({x : state.minuteMax, y : getRandomArbitrary(60,90)})
+      state.minuteData[0].push({x : state.minuteMax, y : getRandomArbitrary(50,60)})
       return {
         ...state
       }

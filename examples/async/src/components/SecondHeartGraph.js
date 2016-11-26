@@ -63,6 +63,9 @@ const HeartGraph = ({dispatch, graph}) => {
   var showData = data.slice(data.length -6, data.length);
   console.log('showData', showData)
 
+  var copiedData = data.slice();
+
+
   return (
     <span>
       <div style={floatLeft}>
@@ -88,17 +91,20 @@ const HeartGraph = ({dispatch, graph}) => {
         }
 
         <div style={floatLeft}>
-        {Object.keys(data).map(function(key) {
-          console.log('data', data[key]);
-          if (data[key].y > 82) {
-            return (
-              <div>
-                Warning: <input value={key} onChange={infoChanged(showingTooltip)} />
-              </div>
-            );
+          <p>Irregularities</p>
+          {copiedData.reverse().map(function(item) {
+            console.log('item', item);
+            if (item.y > 82 || item.y < 55) {
+              var currentDate = new Date();
+              currentDate.setDate(currentDate.getDate() + item.x);
+              return (
+                <div>
+                  {currentDate.toDateString() + ': Heart Rate - ' + item.y} <input defaultValue={'Reason'} onChange={infoChanged(showingTooltip)} />
+                </div>
+              );
+            }
+          })
           }
-        })
-        }
         </div>
     </span>
   );

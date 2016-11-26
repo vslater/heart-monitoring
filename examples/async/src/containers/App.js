@@ -20,7 +20,7 @@ class App extends Component {
         //color: "#333",
         //display: "inline-block",
         fontFamily: "monospace",
-        fontSize: "32",
+        fontSize: "17",
         textAlign: "center",
         display : 'flex',
         justifyContent : 'center',
@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div style={appStyle}>
         <div>
-          <h1 style={h1Style}>Hourly Heart Rates</h1>
+          <h1 style={h1Style}>Daily Heart Rates</h1>
         </div>
         <br/>
         <SecondHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
