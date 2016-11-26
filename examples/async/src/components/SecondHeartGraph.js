@@ -27,21 +27,10 @@ function createTooltip() {
     return false;
   }
 
-// var data = [
-//   [
-//     { x: 10, y: 67 },
-//     { x: 20, y: 68 },
-//     { x: 30, y: 72 },
-//     { x: 40, y: 90 },
-//     { x: 50, y: 66 },
-//     { x: 60, y: 65 }
-//   ]
-// ];
-
 const HeartGraph = ({dispatch, graph}) => {
   setTimeout(() => {
         dispatch({type : 'GET_DATA'});
-    }, 1000);
+    }, 3000);
 
   const {tooltips, showingTooltip, data} = graph;
   
@@ -67,12 +56,18 @@ const HeartGraph = ({dispatch, graph}) => {
     };
   }
 
+  var floatLeft = {
+    float : 'left'
+  }
+
   return (
     <span>
+      <div style={floatLeft}>
         <LineChart
           axes
           grid
           yDomainRange={[50, 100]}
+          axisLabels={{x: 'Time', y: 'Heart Rate'}}
           mouseOverHandler={mouseOverHandler}
           mouseOutHandler={mouseOutHandler}
           mouseMoveHandler={mouseMoveHandler}
@@ -80,6 +75,7 @@ const HeartGraph = ({dispatch, graph}) => {
           height={350}
           data={data}
         />
+      </div>
 
         {showingTooltip &&
           <div>
@@ -87,6 +83,21 @@ const HeartGraph = ({dispatch, graph}) => {
             Info: <input value={tooltips[showingTooltip]} onChange={infoChanged(showingTooltip)} />
           </div>
         }
+
+        <div style={floatLeft}>
+        {Object.keys(data[0]).map(function(key) {
+          console.log('data', data[0][key]);
+          if (data[0][key].y > 75) {
+            console.log('IN HERE')
+            return (
+              <div>
+                Warning: <input value={key} onChange={infoChanged(showingTooltip)} />
+              </div>
+            );
+          }
+        })
+        }
+        </div>
     </span>
   );
 }

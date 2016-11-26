@@ -23,7 +23,8 @@ class App extends Component {
         fontSize: "32",
         textAlign: "center",
         display : 'flex',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        display: 'grid'
 
       };
 
