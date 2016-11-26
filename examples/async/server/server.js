@@ -11,6 +11,8 @@ var Monitoring = function() {
     this.printIrregularities = function() {
         console.log('These dates you had irregular heart rates\n');
 
+        var irregularities = [];
+
         data.forEach(function(item) {
             if (item.rate > 90) {
                 console.log(item.date.toDateString() + ': ' + item.rate + ' beats per minute');

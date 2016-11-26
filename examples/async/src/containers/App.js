@@ -44,12 +44,14 @@ class App extends Component {
 
     return (
       <div style={appStyle}>
+        <img src={require("./LOGO.png")} width="800" height="228"/>
         <div>
-          <h1 style={h1Style}>Realtime Heart Rates</h1>
+          <h1 style={h1Style}>Heart Rates</h1>
         </div>
         <br/>
         <SecondHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
         <br/>
+        <img src={require("./LOGO.png")} width="800" height="228"/>
         <div>
           <h1 style={h1Style}>Daily Heart Rates</h1>
         </div>
