@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div style={appStyle}>
         <div>
-          <h1 style={h1Style}>Heart Graph</h1>
+          <h1 style={h1Style}>Hourly Heart Rates</h1>
         </div>
         <br/>
         <SecondHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
