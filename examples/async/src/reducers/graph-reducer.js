@@ -18,26 +18,15 @@ var initialState = {
   ],
   max : 60,
   minuteData : [
-    [
       { x: 10, y: 67 },
       { x: 20, y: 68 },
       { x: 30, y: 72 },
       { x: 40, y: 90 },
       { x: 50, y: 66 },
       { x: 60, y: 65 }
-    ]
   ],
   minuteMax : 60,
-  quarterData : [
-    [
-      { x: 10, y: 67 },
-      { x: 20, y: 68 },
-      { x: 30, y: 72 },
-      { x: 40, y: 90 },
-      { x: 50, y: 66 },
-      { x: 60, y: 65 }
-    ]
-  ],
+  change : 0
 };
 
 function getRandomArbitrary(min, max) {
@@ -49,17 +38,17 @@ const graphReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DATA_MINUTE:
       state.minuteMax = state.minuteMax + 10;
-      state.minuteData[0].shift();
-      state.minuteData[0].push({x : state.minuteMax, y : getRandomArbitrary(50,60)})
+      state.minuteData.push({x : state.minuteMax, y : getRandomArbitrary(60,90)})
       return {
-        ...state
+        ...state,
+        change : state.change + 1
       }
     case GET_DATA:
       state.max = state.max + 10;
-      //state.data[0].shift();
       state.data.push({x : state.max, y : getRandomArbitrary(60,90)})
       return {
-        ...state
+        ...state,
+        change : state.change + 1
       }
     case UPDATE_TOOLTIP:
       return {

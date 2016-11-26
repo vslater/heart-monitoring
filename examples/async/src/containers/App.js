@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
-import HeartGraph from '../components/HeartGraph'
+import DailyHeartGraph from '../components/DailyHeartGraph'
 import SecondHeartGraph from '../components/SecondHeartGraph'
 
 class App extends Component {
@@ -31,24 +31,29 @@ class App extends Component {
     var h1Style = {
   padding: 10,
   margin: 10,
-  backgroundColor: "#ffde00",
+  //backgroundColor: "#111100",
   //color: "#333",
   //display: "inline-block",
   fontFamily: "monospace",
   fontSize: "50",
   textAlign: "center",
   display : 'flex',
-  justifyContent : 'center'
+  justifyContent : 'center',
+  clear: 'left'
 };
 
     return (
       <div style={appStyle}>
         <div>
-          <h1 style={h1Style}>Daily Heart Rates</h1>
+          <h1 style={h1Style}>Realtime Heart Rates</h1>
         </div>
         <br/>
         <SecondHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
-        {/*<HeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>*/}
+        <br/>
+        <div>
+          <h1 style={h1Style}>Daily Heart Rates</h1>
+        </div>
+        <DailyHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
       </div>
     )
   }

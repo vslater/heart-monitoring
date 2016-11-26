@@ -28,12 +28,13 @@ function createTooltip() {
   }
 
 const HeartGraph = ({dispatch, graph}) => {
-  const {tooltips, showingTooltip, data, change} = graph;
+  const {tooltips, showingTooltip, minuteData, change} = graph;
+  var data = minuteData;
   
-  if (change % 5 !== 0) {
+  if (change % 5 === 0) {
     setTimeout(() => {
-        dispatch({type : 'GET_DATA'});
-    }, 2000);
+        dispatch({type : 'GET_DATA_MINUTE'});
+    }, 1000);
   }
 
   
