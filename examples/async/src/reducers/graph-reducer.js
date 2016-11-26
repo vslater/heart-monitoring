@@ -9,14 +9,12 @@ var initialState = {
   tooltips : {},
   showingTooltip : undefined,
   data : [
-    [
       { x: 10, y: 67 },
       { x: 20, y: 68 },
       { x: 30, y: 72 },
       { x: 40, y: 90 },
       { x: 50, y: 66 },
       { x: 60, y: 65 }
-    ]
   ],
   max : 60,
   minuteData : [
@@ -43,7 +41,7 @@ var initialState = {
 };
 
 function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 const graphReducer = (state = initialState, action) => {
@@ -57,8 +55,8 @@ const graphReducer = (state = initialState, action) => {
       }
     case GET_DATA:
       state.max = state.max + 10;
-      state.data[0].shift();
-      state.data[0].push({x : state.max, y : getRandomArbitrary(60,90)})
+      //state.data[0].shift();
+      state.data.push({x : state.max, y : getRandomArbitrary(60,90)})
       return {
         ...state
       }

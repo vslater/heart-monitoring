@@ -60,6 +60,9 @@ const HeartGraph = ({dispatch, graph}) => {
     float : 'left'
   }
 
+  var showData = data.slice(data.length -6, data.length);
+  console.log('showData', showData)
+
   return (
     <span>
       <div style={floatLeft}>
@@ -73,7 +76,7 @@ const HeartGraph = ({dispatch, graph}) => {
           mouseMoveHandler={mouseMoveHandler}
           width={800}
           height={350}
-          data={data}
+          data={[showData]}
         />
       </div>
 
@@ -85,10 +88,9 @@ const HeartGraph = ({dispatch, graph}) => {
         }
 
         <div style={floatLeft}>
-        {Object.keys(data[0]).map(function(key) {
-          console.log('data', data[0][key]);
-          if (data[0][key].y > 75) {
-            console.log('IN HERE')
+        {Object.keys(data).map(function(key) {
+          console.log('data', data[key]);
+          if (data[key].y > 82) {
             return (
               <div>
                 Warning: <input value={key} onChange={infoChanged(showingTooltip)} />
