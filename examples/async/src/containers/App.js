@@ -5,6 +5,7 @@ import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 import DailyHeartGraph from '../components/DailyHeartGraph'
 import SecondHeartGraph from '../components/SecondHeartGraph'
+import PatientDetails from '../components/PatientDetails'
 
 class App extends Component {
 
@@ -45,12 +46,17 @@ class App extends Component {
     return (
       <div style={appStyle}>
         <img src={require("./LOGO.png")} width="800" height="228"/>
+        <PatientDetails/>
         <div>
           <h1 style={h1Style}>Heart Rates</h1>
         </div>
         <br/>
         <SecondHeartGraph graph={this.props.graph} dispatch={this.props.dispatch}/>
         <br/>
+        <div style={h1Style} width="800" height="200">
+          <button>Share With Doctor</button>
+          <button>Share With Family Member</button>
+        </div>
         <img src={require("./LOGO.png")} width="800" height="228"/>
         <div>
           <h1 style={h1Style}>Daily Heart Rates</h1>

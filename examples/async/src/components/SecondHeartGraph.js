@@ -60,13 +60,17 @@ const HeartGraph = ({dispatch, graph}) => {
   }
 
   var floatLeft = {
-    float : 'left'
+    float : 'left',
+    color : 'red'
   }
 
   var showData = data.slice(data.length -6, data.length);
   console.log('showData', showData)
 
   var copiedData = data.slice();
+  // if (data.length >= 12) {
+  //   copiedData = copiedData(data.length -12, data.length);
+  // }
 
 
   return (
